@@ -146,9 +146,9 @@
             <version>2.6</version>
         </dependency>
         <dependency>
-            <groupId>com.sadasystems.gcs</groupId>
-            <artifactId>gcs-utils</artifactId>
-            <version>LATEST</version>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-csv</artifactId>
+            <version>1.4</version>
         </dependency>
     </dependencies>
 </project>
