@@ -2,11 +2,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.sadasystems.gcs</groupId>
-    <artifactId>gcs-synonyms-connector</artifactId>
-    <version>v1.0-SNAPSHOT</version>
+    <artifactId>sadasystems-gcs-synonyms-connector</artifactId>
+    <version>1.0</version>
 
     <packaging>jar</packaging>
-    <name>sada-cloudsearch-synonyms-connector</name>
+    <name>sadasystems-gcs-synonyms-connector</name>
     <inceptionYear>2018</inceptionYear>
 
     <organization>
