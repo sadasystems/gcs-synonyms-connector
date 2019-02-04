@@ -35,7 +35,7 @@ public class SynonymsRepository implements Repository {
 
     private static final Logger logger = Logger.getLogger(SynonymsRepository.class.getName());
 
-    private IndexingService.RequestMode updateItemMode = IndexingService.RequestMode.ASYNCHRONOUS;
+    private IndexingService.RequestMode requestMode = IndexingService.RequestMode.ASYNCHRONOUS;
 
     private static final String SYNONYMS_FILE_PATH = "synonymsFile.path";
     private static final String SYNONYMS_FILE_URL = "synonymsFile.url";
@@ -146,6 +146,7 @@ public class SynonymsRepository implements Repository {
         // Create the fully formed document
         return new RepositoryDoc.Builder()
                 .setItem(item)
+                .setRequestMode(requestMode)
                 .build();
     }
 
