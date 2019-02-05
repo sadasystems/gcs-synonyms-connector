@@ -130,6 +130,7 @@ public class SynonymsRepository implements Repository {
         String term = record.get(0);
         List<String> synonyms = StreamSupport.stream(record.spliterator(), false)
                 .skip(1) // Skip term
+                .filter(item-> !item.isEmpty())
                 .collect(Collectors.toList());
 
         Multimap<String, Object> structuredData = ArrayListMultimap.create();
