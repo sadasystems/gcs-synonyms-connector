@@ -7,6 +7,7 @@ import com.google.enterprise.cloudsearch.sdk.CheckpointCloseableIterable;
 import com.google.enterprise.cloudsearch.sdk.CheckpointCloseableIterableImpl;
 import com.google.enterprise.cloudsearch.sdk.RepositoryException;
 import com.google.enterprise.cloudsearch.sdk.config.Configuration;
+import com.google.enterprise.cloudsearch.sdk.indexing.Acl;
 import com.google.enterprise.cloudsearch.sdk.indexing.IndexingItemBuilder;
 import com.google.enterprise.cloudsearch.sdk.indexing.IndexingService;
 import com.google.enterprise.cloudsearch.sdk.indexing.template.ApiOperation;
@@ -23,6 +24,7 @@ import java.io.*;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -136,11 +138,15 @@ public class SynonymsRepository implements Repository {
 
         String itemName = String.format("dictionary/%s", term);
 
+        Acl acl = new Acl.Builder().setReaders(Collections.singletonList(Acl.getCustomerPrincipal())).build();
+
+
         // Using the SDK item builder class to create the item
         Item item = IndexingItemBuilder.fromConfiguration(itemName)
                 .setItemType(IndexingItemBuilder.ItemType.CONTENT_ITEM)
                 .setObjectType("_dictionaryEntry")
                 .setValues(structuredData)
+                .setAcl(acl)
                 .build();
 
         // Create the fully formed document
