@@ -41,9 +41,11 @@ public class SynonymsRepository implements Repository {
 
     private static final String SYNONYMS_FILE_PATH = "synonymsFile.path";
     private static final String SYNONYMS_FILE_URL = "synonymsFile.url";
+    public static final String ONLY_APPLICABLE_FOR_ATTACHED_SEARCH_APPLICATIONS = "onlyApplicableForAttachedSearchApplications";
 
     private String synonymsFilePath;
     private String synonymsFileUrl;
+    private boolean onlyApplicableForAttachedSearchApplications;
 
     public SynonymsRepository() {
     }
@@ -54,6 +56,7 @@ public class SynonymsRepository implements Repository {
 
         synonymsFilePath = Configuration.getString(SYNONYMS_FILE_PATH, "").get();
         synonymsFileUrl = Configuration.getString(SYNONYMS_FILE_URL, "").get();
+        onlyApplicableForAttachedSearchApplications = Configuration.getBoolean(ONLY_APPLICABLE_FOR_ATTACHED_SEARCH_APPLICATIONS, false).get();
     }
 
 
@@ -136,6 +139,7 @@ public class SynonymsRepository implements Repository {
         Multimap<String, Object> structuredData = ArrayListMultimap.create();
         structuredData.put("_term", term);
         structuredData.putAll("_synonym", synonyms);
+        structuredData.put("_onlyApplicableForAttachedSearchApplications", onlyApplicableForAttachedSearchApplications);
 
         String itemName = String.format("dictionary/%s", term);
 

@@ -20,6 +20,15 @@
               "operatorName": "not_used"
             }
           }
+        },
+        {
+          "name": "_onlyApplicableForAttachedSearchApplications",
+          "isRepeatable": false,
+          "booleanPropertyOptions": {
+            "operatorOptions": {
+              "operatorName": "not_used"
+            }
+          }
         }
       ]
     }
